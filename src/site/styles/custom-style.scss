@@ -48,12 +48,6 @@ h5 {
   background-color: transparent !important;
 }
 
-/* 修复手机端/所有设备代码块文字变灰的问题，强制所有子元素为黑色 */
-.markdown-rendered pre code,
-.markdown-rendered pre code * {
-  color: #000000 !important;
-}
-
 /* ---------- 实时预览模式 ---------- */
 .cm-s-obsidian .HyperMD-codeblock {
   background-color: #c7bfaa !important;
@@ -75,6 +69,14 @@ h5 {
   color: #000000 !important;
 }
 
+/* ---------- 复制按钮变黑 ---------- */
+.copy-code-button {
+  filter: brightness(0) !important;   /* 完全变成黑色 */
+  opacity: 0.7;
+}
+.copy-code-button:hover {
+  opacity: 1;
+}
 /* 隐藏阅读模式下所有块ID标记 */
 .markdown-preview-view .cm-block-id,
 .markdown-preview-view span.cm-block-id,
