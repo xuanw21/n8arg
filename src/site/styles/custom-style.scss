@@ -1,92 +1,74 @@
-body {
-    /***
-      ADD YOUR CUSTOM STYLING HERE. (INSIDE THE body {...} section.)
-      IT WILL TAKE PRECEDENCE OVER THE STYLING IN THE STYLE.CSS FILE.
-   ***/
-    //  background-color: white;
-    //  .content {
-    //   font-size: 14px;
-    //  }
-    //  h1 {
-    //   color: black;
-    //  }
-}
+/* ===== 标题 h5 居中并放大 ===== */
 h5 {
   text-align: center !important;
   font-size: 2em !important;
 }
+
+/* ===== 自定义粉色 Callout ===== */
 .callout[data-callout="pink"] {
-    --callout-color: 218, 112, 214; /* 英文中orchid的RGB值（亮粉紫色），可按需调整 */
-    --callout-icon: lucide-flower; /* 与粉色搭配的图标，可按需调整为lucide-heart等其他图标 */
+  --callout-color: 218, 112, 214;
+  --callout-icon: lucide-flower;
 }
-/* 让代码块变成纯文本记录风格 */
-/* 同时适配阅读模式和实时预览模式 */
 
-/* ---------- 阅读模式 ---------- */
-.markdown-rendered pre {
+/* ===== 代码块：牛皮纸背景 + 纯黑无高亮 ===== */
+/* 适用于桌面和手机 */
+pre, 
+.markdown-preview-view pre,
+.remark-code,
+code[class*="language-"] {
   background-color: #c7bfaa !important;
-  border: none;             /* 去掉边框（可选） */
+  border: none !important;
 }
 
-.markdown-rendered pre code {
+pre code,
+code[class*="language-"] {
   color: #000000 !important;
-  font-family: var(--font-text) !important;  /* 使用文档正文字体（非等宽） */
-  font-weight: normal;
-  font-style: normal;
+  font-family: var(--font-text), "Microsoft YaHei", sans-serif !important;
+  font-weight: normal !important;
   background-color: transparent !important;
 }
 
-/* 强制去掉所有语法高亮颜色 */
-.markdown-rendered pre code .token,
-.markdown-rendered pre code .keyword,
-.markdown-rendered pre code .string,
-.markdown-rendered pre code .comment,
-.markdown-rendered pre code .function,
-.markdown-rendered pre code .number,
-.markdown-rendered pre code .operator {
+/* 清除所有可能的语法高亮颜色 */
+pre code .token,
+pre code .keyword,
+pre code .string,
+pre code .comment,
+pre code .function,
+pre code .number,
+pre code .operator,
+pre code .tag,
+pre code .attr-name,
+pre code .punctuation,
+pre code .property,
+pre code .selector,
+pre code .atrule,
+pre code .attr-value {
   color: #000000 !important;
   background-color: transparent !important;
 }
 
-/* ---------- 实时预览模式 ---------- */
-.cm-s-obsidian .HyperMD-codeblock {
-  background-color: #c7bfaa !important;
-  color: #000000 !important;
-  font-family: var(--font-text) !important;
-  font-weight: normal;
+/* 手机端强制黑色文字（覆盖可能存在的响应式样式） */
+@media (max-width: 768px) {
+  pre,
+  pre code,
+  pre code * {
+    color: #000000 !important;
+  }
 }
 
-/* 代码块内的所有语法元素强制黑色 */
-.cm-s-obsidian .HyperMD-codeblock .cm-keyword,
-.cm-s-obsidian .HyperMD-codeblock .cm-def,
-.cm-s-obsidian .HyperMD-codeblock .cm-operator,
-.cm-s-obsidian .HyperMD-codeblock .cm-string,
-.cm-s-obsidian .HyperMD-codeblock .cm-number,
-.cm-s-obsidian .HyperMD-codeblock .cm-comment,
-.cm-s-obsidian .HyperMD-codeblock .cm-variable,
-.cm-s-obsidian .HyperMD-codeblock .cm-attribute,
-.cm-s-obsidian .HyperMD-codeblock .cm-builtin {
-  color: #000000 !important;
-}
-
-/* ---------- 复制按钮变黑 ---------- */
-.copy-code-button {
-  filter: brightness(0) !important;   /* 完全变成黑色 */
-  opacity: 0.7;
-}
-.copy-code-button:hover {
-  opacity: 1;
-}
-/* 隐藏阅读模式下所有块ID标记 */
-.markdown-preview-view .cm-block-id,
-.markdown-preview-view span.cm-block-id,
-.markdown-preview-view .block-id {
+/* ===== 隐藏块 ID（网页端） ===== */
+.block-id,
+.block-ref,
+.markdown-embed .block-id,
+.internal-embed .block-id {
   display: none !important;
 }
 
-/* 针对实时预览模式（Live Preview）中的块ID，降低透明度或隐藏 */
-.cm-line .cm-block-id {
+/* 如果你用了 Obsidian 的块引用，网页端可能用 .blockref 标记 */
+.blockref {
   opacity: 0 !important;
   font-size: 0 !important;
   pointer-events: none !important;
 }
+
+/* ===== 可选：复制按钮无法通过 CSS 添加，忽略 ===== */
