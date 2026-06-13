@@ -26,6 +26,7 @@ h5 {
 .markdown-rendered pre {
   background-color: #c7bfaa !important;
   border: none;             /* 去掉边框（可选） */
+  position: relative;        /* 为复制按钮提供定位锚点 */
 }
 
 .markdown-rendered pre code {
@@ -48,13 +49,13 @@ h5 {
   background-color: transparent !important;
 }
 
-/* 新增：完全确保代码块内所有元素在移动端/所有设备都是纯黑色 */
+/* 彻底修复手机端代码块内文字变灰的问题 */
 .markdown-rendered pre code,
 .markdown-rendered pre code * {
   color: #000000 !important;
 }
 
-/* ---------- 实时预览模式（Obsidian 内部使用，保留无影响） ---------- */
+/* ---------- 实时预览模式 ---------- */
 .cm-s-obsidian .HyperMD-codeblock {
   background-color: #c7bfaa !important;
   color: #000000 !important;
@@ -73,6 +74,28 @@ h5 {
 .cm-s-obsidian .HyperMD-codeblock .cm-attribute,
 .cm-s-obsidian .HyperMD-codeblock .cm-builtin {
   color: #000000 !important;
+}
+
+/* ---------- 复制按钮（修复显示并美化） ---------- */
+/* 保留原有变黑思路，但改为可见的灰色按钮，覆盖 filter 效果 */
+.copy-code-button {
+  filter: none !important;            /* 移除变黑滤镜 */
+  background-color: #333333 !important; 
+  color: #ffffff !important;
+  border: none;
+  padding: 2px 8px;
+  border-radius: 4px;
+  opacity: 0.7 !important;
+  font-size: 12px;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  transition: opacity 0.2s;
+}
+.copy-code-button:hover {
+  opacity: 1 !important;
+  background-color: #555555 !important;
 }
 
 /* 隐藏阅读模式下所有块ID标记 */
