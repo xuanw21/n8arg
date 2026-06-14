@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/解谜/ADFGVX解密/","dg-note-properties":{}}
+{"dg-publish":true,"permalink":"/解谜/ADFGVX解密/","dgPassFrontmatter":true,"dg-note-properties":{}}
 ---
 
 [[线索文件/线索文件#^thb\|天花板上的字]]ADFGVX的解密，使用的是 **ADFGVX 密码**[^1]。先以关键词[^2] **PORTAL** 构建 [[解谜/ADFGVX解密#^6x6\|6×6波利比奥斯方阵]]，将 26 个字母和数字 0-9 填入。然后用关键词[^2] **STRANGER** 对密文进行列换位，重新排列后对照方阵替换回原文，得到一串形如
