@@ -90,3 +90,11 @@ h5 {
   font-size: 0 !important;
   pointer-events: none !important;
 }
+
+/* 左上角网站 logo 放大一倍 */
+.site-logo img,
+.navbar-brand img,
+.header-logo img {
+  transform: scale(2);
+  transform-origin: left center; /* 以左边缘为中心放大，防止位移太多 */
+}
