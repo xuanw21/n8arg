@@ -1,0 +1,66 @@
+---
+{"dg-publish":true,"permalink":"/解谜/MAY_IENJOLFDPRCT解密/","dgPassFrontmatter":true,"dg-note-properties":{}}
+---
+
+1. 用[[线索文件/全日记残页#^rj8\|日记残页8]]给出的字母表：
+```
+MAY_IENJOLFDPRCT
+```
+
+把它当成 16个符号，对应半字节0-F：
+```
+MAY＿IENJOLFDPRCT
+012  3456789ABCDEF
+```
+
+2. 用留言板给出的RE45当密钥。
+RE45的 ASCIl 十六进制是：
+```
+R E 4 5
+52 45 34 35
+```
+把每个十六进制数拆成两个“半字节”（4 bit）
+```
+5 2 4 5 3 4 3 5
+```
+3. 对[[线索文件/全日记残页#^rj7\|日记残页7]]密文逐字符解密。
+```
+连成一长串：FIOFNONFJTJENINEOYJENINEPFJPNOEELEJFNNE_O_JLNPEEONJDNINROJJRNINFODJREANNO_JJEINJFENYNONF
+```
+规则是：
+```
+plain_nibble=(cipher_index-key_nibble) mod 16
+```
+然后两个半字节合成一个ASCII字符
+
+> [!NOTE]- 以防你看不懂
+前8个密文字符 F I O F N O N F
+密文	cipher_index	密钥	计算 (mod 16)	plain_nibble
+F	10	5	(10-5)=5	5
+I	4	2	(4-2)=2	2
+O	8	4	(8-4)=4	4
+F	10	5	(10-5)=5	5
+N	6	3	(6-3)=3	3
+O	8	4	(8-4)=4	4
+N	6	3	(6-3)=3	3
+F	10	5	(10-5)=5	5
+得到 8 个半字节：5,2,4,5,3,4,3,5
+两两组合：
+(5,2) → 5×16+2 = 82 → 'R'
+(4,5) → 4×16+5 = 69 → 'E'
+(3,4) → 3×16+4 = 52 → '4'
+(3,5) → 3×16+5 = 53 → '5'
+解密出 RE45，这就是开头
+
+4. 解出来的第一层结果是：
+```
+RE45-0000000x74 C52.148 4608580598-112 2S-45
+```
+5. 将其解读为：
+```
+RE45=身份，迷迭香
+0x74 =VECTOR-BREAKOUT 线索
+C52.148/C52.142=疑似身份参数或坐标片段
+4608580598=很像MGRS坐标数字
+2S-45=可能参与拼52S，或仍是未解释参数
+```
